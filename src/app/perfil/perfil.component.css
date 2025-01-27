@@ -1,0 +1,144 @@
+/* Contenedor principal */
+.perfil-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    gap: 20px;
+  }
+  
+  /* Sección superior */
+  .top-section {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 20px;
+  }
+  
+  /* Caja izquierda para el formulario */
+  .left-box {
+    background-color: #f8f4eb; /* Color de fondo */
+    padding: 20px;
+    border-radius: 8px;
+    width: 48%; /* Ocupa la mitad del ancho */
+  }
+  
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .login-form label {
+    font-weight: bold;
+  }
+  
+  .login-form input {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Caja derecha para el botón y formulario colapsable */
+  .right-box {
+    display: flex;
+    flex-direction: column;
+    width: 48%; /* Ocupa la mitad del ancho */
+    position: relative; /* Añade un contexto para posicionar elementos */
+  }
+  /* Botón Actualizar en la caja izquierda */
+.btn-actualizar {
+  background-color: #c2b8e3; /* Color de fondo del botón */
+  border: none; /* Sin borde */
+  color: #fff; /* Color del texto */
+  padding: 10px; /* Espaciado interno */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Aparece como un botón clicable */
+  margin-top: 20px; /* Espaciado entre el formulario y el botón */
+  width: 100%; /* Ancho del botón al 100% */
+  font-size: 16px; /* Tamaño de texto del botón */
+  text-align: center;
+}
+
+.btn-actualizar:hover {
+  opacity: 0.9; /* Efecto de sombreado al pasar el mouse */
+}
+  
+  /* Ajuste del botón Crear Mascota */
+  .btn-crear {
+    background-color: #60936b;
+    border: none;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    align-self: flex-start; /* Ubica el botón en la parte superior izquierda */
+    margin-bottom: 10px; /* Añade espacio entre el botón y el formulario */
+  }
+  
+  .btn-crear:hover {
+    opacity: 0.9;
+  }
+  
+  .form-crear {
+    padding: 20px;
+    background-color: #e1ddf1;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    display: none; /* Oculto por defecto */
+  }
+  
+  .form-crear.collapsed {
+    display: block; /* Se muestra al colapsar */
+  }
+  
+  .form-crear input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .form-crear .btn-guardar {
+    background-color: #c2b8e3;
+    border: none;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .form-crear .btn-guardar:hover {
+    opacity: 0.9;
+  }
+  
+  /* Lista de Mascotas (parte inferior) */
+  .lista-mascotas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .mascota {
+    width: calc(33.33% - 20px); /* 3 columnas por fila */
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .mascota img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .mascota p {
+    margin: 10px 0 0;
+    font-weight: bold;
+  }

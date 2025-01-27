@@ -2,17 +2,8 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 
 export const routes: Routes = [
-  // Ruta raíz
-  {
-    path: '',
-    component: HomeComponent,
-  },
-  // Ruta explícita para "Home"
-  {
-    path: 'home',
-    component: HomeComponent,
-  },
-  // Rutas con lazy loading para cada componente
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
   {
     path: 'perfil',
     loadComponent: () =>
@@ -40,9 +31,10 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./visitas/visitas.component').then((m) => m.VisitasComponent),
   },
-  // Ruta para manejar errores de página no encontrada
   {
-    path: '**',
-    redirectTo: '/home',
+    path: 'login',
+    loadComponent: () =>
+      import('./login/login.component').then((m) => m.LoginComponent),
   },
+  { path: '**', redirectTo: '/login' },
 ];

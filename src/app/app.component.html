@@ -1,12 +1,41 @@
-<header>
-  <h1>🐾 Bienvenidos a Cuidando Patas 🐾</h1>
-</header>
+<div class="home-container">
+  <!-- CABECERA (se oculta en Login) -->
+  <header class="header" *ngIf="!isLoginPage()">
+    <img src="assets/logo.png" alt="Logo" class="logo" />
+    <button class="logout-btn" (click)="logout()">Cerrar Sesión</button>
+  </header>
 
-<main>
-  <!-- Este router-outlet principal muestra el componente que corresponde a la ruta activa -->
-  <router-outlet></router-outlet>
-</main>
+  <!-- CONTENIDO PRINCIPAL -->
+  <div class="content">
+    <!-- MENÚ LATERAL (se oculta en Login) -->
+    <nav class="sidebar" *ngIf="!isLoginPage()">
+      <ul>
+        <li>
+          <a 
+            routerLink="/home" 
+            routerLinkActive="active-link" 
+            (click)="testClick($event)">
+            Home
+          </a>
+        </li>
+        <li><a routerLink="/perfil" routerLinkActive="active-link">Perfíl</a></li>
+        <li><a routerLink="/datos" routerLinkActive="active-link">Datos</a></li>
+        <li><a routerLink="/pruebas" routerLinkActive="active-link">Pruebas</a></li>
+        <li><a routerLink="/medicacion" routerLinkActive="active-link">Medicación</a></li>
+        <li><a routerLink="/visitas" routerLinkActive="active-link">Visitas</a></li>
+      </ul>
+    </nav>
 
-<footer>
-  <p>© 2023 Cuidando Patas - Todos los derechos reservados.</p>
-</footer>
+    <!-- CUERPO PRINCIPAL -->
+    <main class="main-content">
+      <!-- Aquí todas las rutas serán renderizadas -->
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+
+  <!-- PIE DE PÁGINA (se oculta en Login) -->
+  <footer class="footer" *ngIf="!isLoginPage()">
+    <p>Cuidando Patas</p>
+    <a href="https://instagram.com/cuidandopatas" target="_blank">Instagram</a>
+  </footer>
+</div>
