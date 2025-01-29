@@ -7,7 +7,7 @@
         <div class="left-box">
             <form class="login-form" [formGroup]="createUserForm" (ngSubmit)="onSubmit()">
                 <label for="name">Nombre:</label>
-                <input type="text" id="name" name="name" placeholder="Nombre" formControlName="name"/>
+                <input type="text" id="name" name="name" placeholder="Nombre" formControlName="name" />
                 <label for="sourname">Apellidos:</label>
                 <input type="text" id="surname" name="surname" placeholder="Apellidos" formControlName="surname" />
                 <button type="submit" class="btn-actualizar" [disabled]="createUserForm.invalid">
@@ -25,33 +25,37 @@
 
             <!-- Formulario de Creación (colapsable) -->
             <div class="form-crear" [class.collapsed]="isCollapsed">
-                <form>
+                <form [formGroup]="createPetForm" (ngSubmit)="createPet()">
                     <h3>Crear Mascota</h3>
                     <div class="row">
                         <div class="col-6">
                             <label for="tipo">Tipo:</label>
-                            <input type="text" id="tipo" name="tipo" placeholder="Tipo de mascota" />
+                            <input type="text" id="type" name="tipo" formControlName="type"
+                                placeholder="Tipo de mascota" />
                         </div>
                         <div class="col-6">
                             <label for="raza">Raza:</label>
-                            <input type="text" id="raza" name="raza" placeholder="Raza" />
+                            <input type="text" id="breed" name="raza" formControlName="breed" placeholder="Raza" />
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-6">
                             <label for="nombre">Nombre:</label>
-                            <input type="text" id="nombre" name="nombre" class="col-8" placeholder="Nombre" />
+                            <input type="text" id="petName" name="nombre" class="col-8" formControlName="petName"
+                                placeholder="Nombre" />
                         </div>
                         <div class="col-6">
                             <label for="edad">Edad:</label>
-                            <input type="date" id="fechaNacimiento" name="fechaNacimiento" class="col-8"
-                                (change)="calcularEdad($event)" />
+                            <input type="date" id="dateBirth" name="fechaNacimiento" formControlName="dateBirth"
+                                class="col-8" />
+
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-6">
                             <label for="chip">Nº Chip:</label>
-                            <input type="text" id="chip" name="chip" class="col-8" placeholder="Número de Chip" />
+                            <input type="text" id="chip" name="chip" class="col-8" formControlName="chip"
+                                placeholder="Número de Chip" />
                         </div>
                         <div class="col-6">
                             <label for="foto">Subir Foto:</label>
@@ -59,18 +63,29 @@
                         </div>
                     </div>
                     <!-- Botón Guardar -->
-                    <button type="submit" class="btn-guardar">Guardar</button>
+                    <button type="submit" class="btn-guardar">Añadir</button>
+
                 </form>
             </div>
         </div>
     </div>
-
-    <!-- Parte inferior para la lista de Mascotas -->
-    <div class="lista-mascotas">
-        <div class="mascota" *ngFor="let mascota of mascotas">
-            <img [src]="mascota.foto" alt="Foto de la Mascota" />
-            <p>{{ mascota.nombre }}</p>
-        </div>
+    <!-- Línea divisoria con título -->
+    <div class="linea-divisoria">
+        <h2>Mascotas Actuales</h2>
     </div>
 
-</div>
+    <div class="lista-mascotas">
+        <!-- Mostrar imágenes por defecto solo si no hay mascotas -->
+        <ng-container *ngIf="mascotas.length === 0">
+            <div class="mascota" *ngFor="let image of defaultImages">
+                <img [src]="image" alt="Imagen predeterminada" />
+                <p>Mascota</p>
+            </div>
+        </ng-container>
+
+        <!-- Mostrar tarjetas de mascotas reales -->
+        <div class="mascota" *ngFor="let mascota of mascotas">
+            <img [src]="mascota.foto ? mascota.foto : 'assets/default-placeholder.jpg'" alt="Foto de la Mascota" />
+            <p>{{ mascota.petName }}</p>
+        </div>
+    </div>

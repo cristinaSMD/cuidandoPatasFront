@@ -1,7 +1,9 @@
 <div class="home-container">
   <!-- CABECERA (se oculta en Login) -->
   <header class="header" *ngIf="!isLoginPage()">
-    <img src="assets/logo.png" alt="Logo" class="logo" />
+    <div class="logo-container" *ngIf="!isLoginPage()">
+      <img src="logo.png" alt="Logo" />
+    </div>
     <button class="logout-btn" (click)="logout()">Cerrar Sesión</button>
   </header>
 

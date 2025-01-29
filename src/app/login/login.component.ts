@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router'; // Importar Router
+import { GlobalService } from '../global.service';
 
 @Component({
   selector: 'app-login',
@@ -14,8 +15,8 @@ import { Router } from '@angular/router'; // Importar Router
 export class LoginComponent {
   loginForm: FormGroup;
   errorMessage: string | null = null;
-
   constructor(
+    public globalService : GlobalService,
     private fb: FormBuilder,
     private http: HttpClient,
     private router: Router // Inyectar el Router
@@ -25,13 +26,15 @@ export class LoginComponent {
       password: ['', [Validators.required]],
     });
   }
-
+  
   onSubmit() {
     // Verificar que el formulario sea válido
     if (this.loginForm.valid) {
       const loginData = this.loginForm.value;
-      this.http.post('/api/v1/users/loginProcess', loginData).subscribe({
+      this.http.post<string>('/api/v1/users/loginProcess', loginData).subscribe({
         next: (response) => {
+          this.globalService.userSessionId = response;
+
           this.errorMessage = null; // Limpia errores previos
           // Redirige al HomeComponent después del login exitoso
           this.router.navigate(['/home']); // Cambiar la ruta a /home
