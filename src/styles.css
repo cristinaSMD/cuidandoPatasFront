@@ -7,8 +7,16 @@
     --text-color: #333; /* Color del texto */
   }
   
-
-
- 
   
-  
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Clase personalizada para tooltips */
+.custom-tooltip {
+  background-color: #b8e3c1 ; 
+  color: #042a0d !important; 
+  border: 1px solid #155724; 
+  font-weight: bold;
+  padding: 8px 12px; 
+  border-radius: 4px;
+}

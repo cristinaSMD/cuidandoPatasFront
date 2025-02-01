@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DatosComponent } from './datos.component';
+import { MasterListComponent } from './master-list.component';
 
-describe('DatosComponent', () => {
-  let component: DatosComponent;
-  let fixture: ComponentFixture<DatosComponent>;
+describe('MasterListComponent', () => {
+  let component: MasterListComponent;
+  let fixture: ComponentFixture<MasterListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DatosComponent]
+      imports: [MasterListComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DatosComponent);
+    fixture = TestBed.createComponent(MasterListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

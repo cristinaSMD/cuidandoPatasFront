@@ -1,40 +1,43 @@
 import { Routes } from '@angular/router';
+
+import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { PerfilComponent } from './perfil/perfil.component';
+import { PruebasComponent } from './pruebas/pruebas.component';
+import { MedicacionComponent } from './medicacion/medicacion.component';
+import { VisitasComponent } from './visitas/visitas.component';
+import { MedicacionDetalleComponent } from './medicacion/medicacion-detalle/medicacion.detalle.component'; 
+
+
 
 export const routes: Routes = [
+  // Ruta raíz
   { path: '', redirectTo: 'login', pathMatch: 'full' },
+
+  // Login
+  { path: 'login', component: LoginComponent },
+
+  // Home
   { path: 'home', component: HomeComponent },
-  {
-    path: 'perfil',
-    loadComponent: () =>
-      import('./perfil/perfil.component').then((m) => m.PerfilComponent),
-  },
-  {
-    path: 'datos',
-    loadComponent: () =>
-      import('./datos/datos.component').then((m) => m.DatosComponent),
-  },
-  {
-    path: 'pruebas',
-    loadComponent: () =>
-      import('./pruebas/pruebas.component').then((m) => m.PruebasComponent),
-  },
-  {
-    path: 'medicacion',
-    loadComponent: () =>
-      import('./medicacion/medicacion.component').then(
-        (m) => m.MedicacionComponent
-      ),
-  },
-  {
-    path: 'visitas',
-    loadComponent: () =>
-      import('./visitas/visitas.component').then((m) => m.VisitasComponent),
-  },
-  {
-    path: 'login',
-    loadComponent: () =>
-      import('./login/login.component').then((m) => m.LoginComponent),
-  },
-  { path: '**', redirectTo: '/login' },
+
+  // Perfil
+  { path: 'perfil', component: PerfilComponent },
+
+  // Pruebas
+  { path: 'pruebas', component: PruebasComponent },
+
+  // Medicación
+  { path: 'medicacion', component: MedicacionComponent },
+
+  // Medicación detalle
+  { path: 'medicacion.detalle/:name', component: MedicacionDetalleComponent }, 
+
+
+  // Visitas
+  { path: 'visitas', component: VisitasComponent },
+
+
+
+  // Ruta comodín para redirigir a login si la ruta no existe
+  { path: '**', redirectTo: 'login' },
 ];

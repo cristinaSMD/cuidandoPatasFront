@@ -50,7 +50,17 @@ export class PerfilComponent implements OnInit { // Implementamos OnInit
     });
 
   }
+  // Seleccionar una imagen de mascota
   
+  onImageSelect(event: Event): void {
+    const input = event.target as HTMLInputElement;
+
+    if (input.files && input.files.length > 0) {
+      const file = input.files[0];
+      console.log('Imagen seleccionada:', file);
+      // Puedes realizar más acciones como cargar el archivo al servidor o almacenarlo localmente.
+    }
+  }
 
   // Formulario de creación de mascota
 
@@ -98,6 +108,7 @@ export class PerfilComponent implements OnInit { // Implementamos OnInit
       console.log('Errores en el formulario:', this.createPetForm.errors);
     }
   }
+  
 
   loadPets() {
     // Llamada HTTP POST con los datos del formulario

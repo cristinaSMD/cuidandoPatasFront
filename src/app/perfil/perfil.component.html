@@ -59,7 +59,7 @@
                         </div>
                         <div class="col-6">
                             <label for="foto">Subir Foto:</label>
-                            <input type="file" id="foto" accept="image/*" />
+                            <input type="file" id="foto" accept="image/*" (change)="onImageSelect($event)" />
                         </div>
                     </div>
                     <!-- Botón Guardar -->

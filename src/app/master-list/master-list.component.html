@@ -1,0 +1,55 @@
+<table>
+  <thead>
+    <!-- Cabecera de la tabla -->
+    <tr>
+      <th *ngFor="let column of columns">{{ column.header }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Filas de la tabla -->
+    <tr *ngFor="let row of data">
+      <td *ngFor="let column of columns">
+        <ng-container [ngSwitch]="column.field">
+          <!-- Si el campo es "name" -->
+          <ng-container *ngSwitchCase="'name'">
+            <!-- tooltip  -->
+            <span matTooltip="Dosis: {{ row['dose'] || 'N/A' }}, Frecuencia: {{ row['frequency'] || 'N/A' }}"
+              matTooltipPosition="above" matTooltipClass="custom-tooltip">
+              {{ row[column.field] || 'N/A' }}
+            </span>
+          </ng-container>
+
+          <!-- Si el campo es "active" -->
+          <ng-container *ngSwitchCase="'active'">
+            <!-- Ícono para valores true -->
+            <mat-icon *ngIf="row[column.field] === true" class="icon icon-active">
+              done
+            </mat-icon>
+            <!-- Ícono para valores false -->
+            <mat-icon *ngIf="row[column.field] === false" class="icon icon-inactive">
+              clear
+            </mat-icon>
+          </ng-container>
+          <!-- Si es la columna 'information' -->
+          <ng-container *ngSwitchCase="'information'">
+            <mat-icon class="icon-info" (click)="navigateToDetail(row)" style="cursor: pointer"
+              matTooltip="Ver detalles" matTooltipPosition="above">
+              visibility
+            </mat-icon>
+          </ng-container>
+
+          <!-- Mostrar valores por defecto para otras columnas -->
+          <ng-container *ngSwitchDefault>
+            <ng-container *ngIf="row[column.field]; else emptyField">
+              {{ row[column.field] }}
+            </ng-container>
+            <!-- Reemplaza el campo vacío con un ícono -->
+            <ng-template #emptyField>
+              <mat-icon class="icon-empty">remove</mat-icon>
+            </ng-template>
+          </ng-container>
+        </ng-container>
+      </td>
+    </tr>
+  </tbody>
+</table>
