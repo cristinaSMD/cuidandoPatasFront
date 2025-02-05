@@ -1,1 +1,26 @@
-<p>visitas works!</p>
+<div class="calendar-container">
+    <h2>Calendario de Visitas</h2>
+  
+    <!-- Calendario -->
+    <mat-calendar [(selected)]="fechaSeleccionada"></mat-calendar>
+  
+    <!-- Mostrar la fecha seleccionada -->
+    <p>
+      Fecha seleccionada: <b>{{ fechaSeleccionada | date: 'dd/MM/yyyy' }}</b>
+    </p>
+  
+    <!-- Botón para guardar -->
+    <button mat-raised-button color="primary" (click)="guardarFecha()">
+      Guardar Fecha
+    </button>
+  
+    <!-- Mostrar todas las fechas guardadas -->
+    <div class="visitas-lista">
+      <h3>Próximas Visitas</h3>
+      <ul>
+        <li *ngFor="let fecha of visitas">
+          {{ fecha | date: 'fullDate' }}
+        </li>
+      </ul>
+    </div>
+  </div>

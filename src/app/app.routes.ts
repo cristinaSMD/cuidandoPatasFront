@@ -6,7 +6,9 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { PruebasComponent } from './pruebas/pruebas.component';
 import { MedicacionComponent } from './medicacion/medicacion.component';
 import { VisitasComponent } from './visitas/visitas.component';
-import { MedicacionDetalleComponent } from './medicacion/medicacion-detalle/medicacion.detalle.component'; 
+import { PerfilDetalleComponent } from './perfil/perfil-detalle/perfil-detalle.component';
+
+
 
 
 
@@ -23,15 +25,14 @@ export const routes: Routes = [
   // Perfil
   { path: 'perfil', component: PerfilComponent },
 
+   // Perfil detalle
+   { path: 'perfil/detalle/:id', component: PerfilDetalleComponent },
+
   // Pruebas
   { path: 'pruebas', component: PruebasComponent },
 
   // Medicación
   { path: 'medicacion', component: MedicacionComponent },
-
-  // Medicación detalle
-  { path: 'medicacion.detalle/:name', component: MedicacionDetalleComponent }, 
-
 
   // Visitas
   { path: 'visitas', component: VisitasComponent },

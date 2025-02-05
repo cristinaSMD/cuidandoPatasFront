@@ -44,6 +44,14 @@ body {
   padding: 10px 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+.user-box {
+  background-color: #d8a7f0; 
+  padding: 5px 10px; 
+  border-radius: 5px; 
+  display: inline-block; 
+  text-align: center;
+  margin-bottom: 10px;
+}
 
 .logout-btn {
   background-color: #850cdb; 
@@ -54,9 +62,15 @@ body {
   cursor: pointer;
   font-size: 14px;
 }
-
-.logout-btn:hover {
-  background-color: #ff4c4c; /* Más oscuro al pasar el ratón */
+.cerrarSesion{
+  background-color: #b14cff;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  font-size: 14px;
+}
+.cerrarSesion:hover {
+  background-color: #628df3; /* Más oscuro al pasar el ratón */
 }
 
 /* CONTENIDO PRINCIPAL */

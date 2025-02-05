@@ -1,5 +1,17 @@
 <section class="medicacion-page">
   <h2>Listado de Medicación</h2>
 
+  <!-- Contenedor para los botones de las mascotas -->
+  <div class="mascotas-buttons mb-4">
+    <div class="btn-group" role="group" aria-label="Mascotas del usuario">
+      <!-- Botones generados dinámicamente -->
+      <button *ngFor="let mascota of mascotas" type="button" class="btn btn-outline-primary"
+        [class.active]="selectedPetId === mascota.id" (click)="seleccionarMascota(mascota.id)">
+        {{ mascota.petName || 'Sin Nombre' }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Tabla de medicaciones (usando MasterListComponent) -->
   <app-master-list [columns]="columns" [data]="data"></app-master-list>
 </section>

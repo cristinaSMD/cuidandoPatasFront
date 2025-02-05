@@ -22,3 +22,20 @@
   .table th {
     background-color: #f4f4f4;
   }
+
+  .mascotas-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px; /* Espacio entre botones */
+  }
+  
+  .mascotas-buttons .btn {
+    min-width: 100px; /* Para que todos los botones tengan un ancho consistente */
+    text-align: center;
+  }
+  
+  .mascotas-buttons .btn.active {
+    background-color: #007bff;
+    color: white;
+  }

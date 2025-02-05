@@ -86,6 +86,10 @@
         <!-- Mostrar tarjetas de mascotas reales -->
         <div class="mascota" *ngFor="let mascota of mascotas">
             <img [src]="mascota.foto ? mascota.foto : 'assets/default-placeholder.jpg'" alt="Foto de la Mascota" />
-            <p>{{ mascota.petName }}</p>
+            <a [routerLink]="['/perfil/detalle', mascota.id]" class="mascota-nombre">
+                {{ mascota.petName }}
+              </a>
+            
+            
         </div>
     </div>

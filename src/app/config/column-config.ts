@@ -6,7 +6,7 @@ export const columnsConfig = {
     { header: 'Fecha inicio', field: 'dateStart' },
     { header: 'Fecha fin', field: 'dateEnd' },
     { header: 'Activa', field: 'active' },   
-    { header: 'Información', field: 'information' },  
+ 
 
   ],
   pruebas: [

@@ -2,42 +2,58 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router'; // Importar Router
-import { GlobalService } from '../global.service';
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  standalone: true, // DECLARACIÓN DE STANDALONE
-  imports: [CommonModule, ReactiveFormsModule], // Importar solo lo que necesitas
+  standalone: true, // Declaración de componente standalone
+  imports: [CommonModule, ReactiveFormsModule], // Importar solo lo necesario
 })
 export class LoginComponent {
   loginForm: FormGroup;
   errorMessage: string | null = null;
+
   constructor(
-    public globalService : GlobalService,
-    private fb: FormBuilder,
-    private http: HttpClient,
+    private fb: FormBuilder, 
+    private http: HttpClient, 
     private router: Router // Inyectar el Router
   ) {
+    // Crear formulario reactivo
     this.loginForm = this.fb.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required]],
     });
   }
-  
+
+  // Método que se ejecuta automáticamente al cargar el componente
+  ngOnInit() {
+    // Verificar si ya hay una sesión activa guardada en localStorage
+    const savedUserSessionId = localStorage.getItem('userSessionId');
+    if (savedUserSessionId) {
+      console.log('Sesión activa encontrada: ' + savedUserSessionId);
+      // Si hay sesión activa, redirigir directamente al /home
+      this.router.navigate(['/home']);
+    }
+  }
+
+  // Método que se ejecuta al enviar el formulario
   onSubmit() {
-    // Verificar que el formulario sea válido
     if (this.loginForm.valid) {
       const loginData = this.loginForm.value;
-      this.http.post<string>('/api/v1/users/loginProcess', loginData).subscribe({
+      this.http.post<string>('/api/v1/users/loginProcess', loginData,
+         { responseType: 'text' as 'json' }//Añadimos esto para leer el response como string
+      ).subscribe({
         next: (response) => {
-          this.globalService.userSessionId = response;
+          // Guardar el ID de sesión y el nombre del usuario en localStorage
+          localStorage.setItem('userSessionId', response); // response es el ID de sesión
+          localStorage.setItem('username', loginData.username); // Guardar el nombre del usuario
 
-          this.errorMessage = null; // Limpia errores previos
-          // Redirige al HomeComponent después del login exitoso
-          this.router.navigate(['/home']); // Cambiar la ruta a /home
+          console.log('Sesión iniciada. ID:', response);
+
+          // Redirigir al usuario a la pantalla principal
+          this.router.navigate(['/home']);
         },
         error: (error) => {
           console.error('Error al iniciar sesión:', error);
@@ -46,7 +62,7 @@ export class LoginComponent {
         },
       });
     } else {
-      this.errorMessage = 'Por favor, llena todos los campos correctamente'; // Mensaje si el formulario está incompleto
+      this.errorMessage = 'Por favor, llena todos los campos correctamente';
     }
   }
 }

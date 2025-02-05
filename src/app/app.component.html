@@ -1,10 +1,22 @@
 <div class="home-container">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- CABECERA (se oculta en Login) -->
   <header class="header" *ngIf="!isLoginPage()">
     <div class="logo-container" *ngIf="!isLoginPage()">
       <img src="logo.png" alt="Logo" />
     </div>
-    <button class="logout-btn" (click)="logout()">Cerrar Sesión</button>
+    
+    <!-- Contenedor para el nombre del usuario y el botón -->
+    <div class="d-flex flex-column align-items-center ">
+      <!-- Nombre del usuario -->
+      <div class="user-box">
+        <p *ngIf="username">
+          {{ username }}
+        </p>
+      </div>
+      <!-- Botón de cerrar sesión -->
+      <button class="cerrarSesion" (click)="logout()">Cerrar Sesión</button>
+    </div>
   </header>
 
   <!-- CONTENIDO PRINCIPAL -->
@@ -13,10 +25,7 @@
     <nav class="sidebar" *ngIf="!isLoginPage()">
       <ul>
         <li>
-          <a 
-            routerLink="/home" 
-            routerLinkActive="active-link" 
-            (click)="testClick($event)">
+          <a routerLink="/home" routerLinkActive="active-link">
             Home
           </a>
         </li>

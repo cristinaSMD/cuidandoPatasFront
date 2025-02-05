@@ -6,6 +6,7 @@
     </tr>
   </thead>
   <tbody>
+
     <!-- Filas de la tabla -->
     <tr *ngFor="let row of data">
       <td *ngFor="let column of columns">
@@ -30,13 +31,17 @@
               clear
             </mat-icon>
           </ng-container>
-          <!-- Si es la columna 'information' -->
-          <ng-container *ngSwitchCase="'information'">
-            <mat-icon class="icon-info" (click)="navigateToDetail(row)" style="cursor: pointer"
-              matTooltip="Ver detalles" matTooltipPosition="above">
-              visibility
+
+          <!--METER EL CRUD-->
+
+          <!-- Si el campo es "opciones" -->
+          <ng-container *ngSwitchCase="'opciones'">
+            <!-- Ícono de edición con tooltip -->
+            <mat-icon matTooltip="Editar" matTooltipPosition="above" class="icon-edit" (click)="navigateToDetail(row)">
+              create
             </mat-icon>
           </ng-container>
+
 
           <!-- Mostrar valores por defecto para otras columnas -->
           <ng-container *ngSwitchDefault>

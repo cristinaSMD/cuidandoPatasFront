@@ -1,0 +1,27 @@
+<div class="container mt-4" *ngIf="mascota">
+    <h2>{{ mascota.petName }}</h2>
+    <form>
+      <div class="mb-3">
+        <label for="type" class="form-label">Tipo:</label>
+        <input type="text" id="type" class="form-control" [value]="mascota.type" readonly />
+      </div>
+      <div class="mb-3">
+        <label for="breed" class="form-label">Raza:</label>
+        <input type="text" id="breed" class="form-control" [value]="mascota.breed" readonly />
+      </div>
+      <div class="mb-3">
+        <label for="chip" class="form-label">Nº Chip:</label>
+        <input type="text" id="chip" class="form-control" [value]="mascota.chip" readonly />
+      </div>
+      <div class="mb-3">
+        <label for="dateBirth" class="form-label">Fecha de Nacimiento:</label>
+        <input
+          type="text"
+          id="dateBirth"
+          class="form-control"
+          [value]="mascota.dateBirth | date: 'dd/MM/yyyy'"
+          readonly
+        />
+      </div>
+    </form>
+  </div>

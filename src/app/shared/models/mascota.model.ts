@@ -10,4 +10,6 @@ export interface Mascota {
     chip: string;      
     foto?: string;      
   }
+ 
+
   export const _MascotaModule = true;
