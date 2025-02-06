@@ -17,7 +17,7 @@ export class MedicacionService {
   }
 
   // Método para guardar una nueva medicación
-  saveMedicacion(petId: string, medicacion: any): Observable<any> {
+  createMedicacion(petId: string, medicacion: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/${petId}/medicine`, medicacion);
   }
 

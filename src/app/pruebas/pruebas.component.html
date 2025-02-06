@@ -1,5 +1,69 @@
 <section class="pruebas-page">
-    <h2>Listado de Pruebas</h2>
-  
-    <app-master-list [columns]="columns" [data]="data"></app-master-list>
-  </section>
+  <h2>Listado de Pruebas</h2>
+
+  <!-- Botones por mascota -->
+  <div class="mascotas-buttons mb-4">
+    <div class="btn-group" role="group" aria-label="Mascotas del usuario">
+      <button
+        *ngFor="let mascota of mascotas"
+        type="button"
+        class="btn btn-outline-primary"
+        [class.active]="selectedPetId === mascota.id"
+        (click)="seleccionarMascota(mascota.id)"
+      >
+        {{ mascota.petName || 'Sin Nombre' }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Crear nueva prueba -->
+  <div class="crear-prueba">
+    <button type="button" class="btn-crear col-md-2" (click)="toggleCollapse()">
+      {{ isCollapsed ? 'Crear' : 'Crear' }}
+    </button>
+
+    <div class="form-crear-prueba" [ngClass]="{ 'collapsed': isCollapsed }">
+      <form [formGroup]="createPruebaForm" (ngSubmit)="createPrueba()">
+        <!-- Tipo de Prueba -->
+        <div class="col-md-4">
+          <label for="type" class="form-label">Tipo de Prueba</label>
+          <input
+            type="text"
+            id="type"
+            class="form-control"
+            formControlName="type"
+            placeholder="Ej. Ecografía"
+            required
+          />
+        </div>
+
+        <!-- Fecha -->
+        <div class="col-md-3">
+          <label for="date" class="form-label">Fecha</label>
+          <input type="date" id="date" class="form-control" formControlName="date" required />
+        </div>
+
+        <!-- Resultado -->
+        <div class="col-md-6">
+          <label for="result" class="form-label">Resultado</label>
+          <textarea
+            id="result"
+            class="form-control"
+            formControlName="result"
+            placeholder="Ingresa el resultado de la prueba (opcional)"
+          ></textarea>
+        </div>
+
+        <!-- Botón Guardar -->
+        <div class="col-md-12 mt-3">
+          <button type="submit" class="btn-guardar" [disabled]="createPruebaForm.invalid">
+            Guardar 
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Tabla de Pruebas -->
+  <app-master-list [columns]="columns" [data]="data"></app-master-list>
+</section>

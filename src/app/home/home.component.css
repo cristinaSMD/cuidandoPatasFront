@@ -1,0 +1,35 @@
+.home-card {
+    background-color: #E1DDF1; /* Color de fondo de la tarjeta */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    max-width: 800px; /* Ancho máximo de la tarjeta */
+    margin: 20px auto; /* Centramos la tarjeta horizontalmente */
+    font-family: 'Arial', sans-serif; /* Fuente básica */
+    color: #333; /* Color del texto */
+  }
+  
+  .home-card h2 {
+    color: #4A148C; /* Un color más vibrante para el título */
+    font-size: 24px;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  .home-card p, .home-card li {
+    font-size: 16px;
+    line-height: 1.6; /* Mejoramos la lectura */
+  }
+  
+  .home-card strong {
+    color: #9C27B0; /* Un tono destacado para palabras importantes */
+  }
+  
+  .home-card ul {
+    list-style-type: none; /* Quitamos los puntos de las listas */
+    padding: 0;
+  }
+  
+  .home-card li {
+    margin-bottom: 10px; /* Espaciado entre ítems */
+  }

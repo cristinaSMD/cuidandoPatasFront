@@ -10,7 +10,7 @@
     </p>
   
     <!-- Botón para guardar -->
-    <button mat-raised-button color="primary" (click)="guardarFecha()">
+    <button mat-raised-button class="btn-guardarFecha" (click)="guardarFecha()">
       Guardar Fecha
     </button>
   
@@ -19,7 +19,8 @@
       <h3>Próximas Visitas</h3>
       <ul>
         <li *ngFor="let fecha of visitas">
-          {{ fecha | date: 'fullDate' }}
+          {{ fecha | date: 'fullDate' : '' : 'es-ES' }}
+
         </li>
       </ul>
     </div>

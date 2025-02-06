@@ -1,5 +1,6 @@
 <div class="home-container">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <!-- CABECERA (se oculta en Login) -->
   <header class="header" *ngIf="!isLoginPage()">
     <div class="logo-container" *ngIf="!isLoginPage()">
@@ -7,7 +8,7 @@
     </div>
     
     <!-- Contenedor para el nombre del usuario y el botón -->
-    <div class="d-flex flex-column align-items-center ">
+    <div class="d-flex flex-column align-items-center">
       <!-- Nombre del usuario -->
       <div class="user-box">
         <p *ngIf="username">
@@ -25,14 +26,40 @@
     <nav class="sidebar" *ngIf="!isLoginPage()">
       <ul>
         <li>
-          <a routerLink="/home" routerLinkActive="active-link">
-            Home
+          <a routerLink="/home" 
+             routerLinkActive="active-link" 
+             class="menu-item">
+            Inicio
           </a>
         </li>
-        <li><a routerLink="/perfil" routerLinkActive="active-link">Perfíl</a></li>
-        <li><a routerLink="/pruebas" routerLinkActive="active-link">Pruebas</a></li>
-        <li><a routerLink="/medicacion" routerLinkActive="active-link">Medicación</a></li>
-        <li><a routerLink="/visitas" routerLinkActive="active-link">Visitas</a></li>
+        <li>
+          <a routerLink="/perfil" 
+             routerLinkActive="active-link" 
+             class="menu-item">
+            Perfíl
+          </a>
+        </li>
+        <li>
+          <a routerLink="/pruebas"
+             routerLinkActive="active-link" 
+             class="menu-item">
+            Pruebas
+          </a>
+        </li>
+        <li>
+          <a routerLink="/medicacion" 
+             routerLinkActive="active-link" 
+             class="menu-item">
+            Medicación
+          </a>
+        </li>
+        <li>
+          <a routerLink="/visitas"
+             routerLinkActive="active-link"
+             class="menu-item">
+            Visitas
+          </a>
+        </li>
       </ul>
     </nav>
 

@@ -5,13 +5,104 @@
   <div class="mascotas-buttons mb-4">
     <div class="btn-group" role="group" aria-label="Mascotas del usuario">
       <!-- Botones generados dinámicamente -->
-      <button *ngFor="let mascota of mascotas" type="button" class="btn btn-outline-primary"
-        [class.active]="selectedPetId === mascota.id" (click)="seleccionarMascota(mascota.id)">
+      <button
+        *ngFor="let mascota of mascotas"
+        type="button"
+        class="btn btn-outline-primary"
+        [class.active]="selectedPetId === mascota.id"
+        (click)="seleccionarMascota(mascota.id)"
+      >
         {{ mascota.petName || 'Sin Nombre' }}
       </button>
     </div>
   </div>
 
-  <!-- Tabla de medicaciones (usando MasterListComponent) -->
+  <!-- Crear medicación -->
+  <div class="crear-medicacion">
+    <!-- Botón para alternar colapsar o expandir -->
+    <button type="button" class="btn-crear col-md-2" (click)="toggleCollapse()">
+      {{ isCollapsed ? 'Crear' : 'Crear' }}
+    </button>
+
+    <!-- Contenedor del formulario colapsable -->
+    <div class="form-crear-medicacion" [ngClass]="{ 'collapsed': isCollapsed }">
+      <form [formGroup]="createMedicacionForm" (ngSubmit)="createMedicacion()">
+        <!-- Nombre -->
+        <div class="col-md-2">
+          <label for="name" class="form-label">Nombre</label>
+          <input
+            type="text"
+            id="name"
+            class="form-control"
+            formControlName="name"
+            placeholder="Nombre de la medicación"
+            required
+          />
+        </div>
+
+        <!-- Dosis -->
+        <div class="col-md-2">
+          <label for="dose" class="form-label">Dosis</label>
+          <input
+            type="text"
+            id="dose"
+            class="form-control"
+            formControlName="dose"
+            placeholder="Dosis"
+            required
+          />
+        </div>
+
+        <!-- Frecuencia -->
+        <div class="col-md-2">
+          <label for="frequency" class="form-label">Frecuencia</label>
+          <input
+            type="text"
+            id="frequency"
+            class="form-control"
+            formControlName="frequency"
+            placeholder="Frecuencia"
+            required
+          />
+        </div>
+
+        <!-- Fecha Inicio -->
+        <div class="col-md-2">
+          <label for="dateStart" class="form-label">Fecha Inicio</label>
+          <input
+            type="date"
+            id="dateStart"
+            class="form-control"
+            formControlName="dateStart"
+            required
+          />
+        </div>
+
+        <!-- Fecha Fin -->
+        <div class="col-md-2">
+          <label for="dateEnd" class="form-label">Fecha Fin</label>
+          <input
+            type="date"
+            id="dateEnd"
+            class="form-control"
+            formControlName="dateEnd"
+          />
+        </div>
+
+        <!-- Activa -->
+        <div class="col-md-2 form-check">
+          <input type="checkbox" id="active" class="form-check-input" formControlName="active" />
+          <label for="active" class="form-check-label">Activa</label>
+        </div>
+
+        <!-- Botón Guardar -->
+        <button type="submit" class="btn-guardar" [disabled]="createMedicacionForm.invalid">
+          Guardar 
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Tabla de medicaciones (MasterListComponent) -->
   <app-master-list [columns]="columns" [data]="data"></app-master-list>
 </section>

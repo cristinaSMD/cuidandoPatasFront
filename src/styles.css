@@ -1,4 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+
 /* Colores */
 :root {
     --header-bg: #E1DDF1;
@@ -14,7 +14,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 /* Clase personalizada para tooltips */
 .custom-tooltip {
   background-color: #b8e3c1 ; 
-  color: #042a0d !important; 
+  color: #042a0d; 
   border: 1px solid #155724; 
   font-weight: bold;
   padding: 8px 12px; 

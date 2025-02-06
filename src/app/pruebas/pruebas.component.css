@@ -1,0 +1,45 @@
+/* Botones de mascota */
+.mascotas-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.mascotas-buttons .btn {
+    min-width: 120px;
+    text-align: center;
+}
+
+.mascotas-buttons .btn.active {
+    background-color: #876be4;
+    color: white;
+}
+
+/* Formulario colapsado */
+.form-crear-prueba.collapsed {
+    display: none;
+}
+
+.form-crear-prueba {
+    margin-top: 1rem;
+}
+
+/* Estilos generales */
+
+.btn-crear {
+    background-color: #876be4;
+    color: white;
+    border-radius: 5px;
+  }
+  .btn-crear:hover{
+    background-color: #5e34e8;
+  }
+  .btn-guardar{
+    background-color: #876be4;
+    color: white;
+    border-radius: 5px;
+  }
+  .btn-guardar:hover{
+    background-color: #5e34e8;
+  }

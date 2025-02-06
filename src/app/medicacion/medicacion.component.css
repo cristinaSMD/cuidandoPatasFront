@@ -31,11 +31,51 @@
   }
   
   .mascotas-buttons .btn {
-    min-width: 100px; /* Para que todos los botones tengan un ancho consistente */
+    min-width: 100px; 
     text-align: center;
   }
   
   .mascotas-buttons .btn.active {
-    background-color: #007bff;
+    background-color: #876be4;
     color: white;
   }
+
+ /*crear medicación*/
+
+ /* Formulario colapsado */
+.form-crear-medicacion.collapsed {
+  display: none; /* Oculta el formulario */
+}
+
+/* Formulario expandido */
+.form-crear-medicacion {
+  display: block; /* Muestra el formulario */
+}
+
+.btn-success {
+  background-color: #876be4;
+  border-color: #e3b8da;
+  color: white;
+}
+.btn-success:hover{
+  background-color: #c2b8e3;
+}
+
+/* Común para los botones */
+.btn-crear {
+  background-color: #876be4;
+  color: white;
+  border-radius: 5px;
+}
+.btn-crear:hover{
+  background-color: #5e34e8;
+}
+.btn-guardar{
+  background-color: #876be4;
+  color: white;
+  border-radius: 5px;
+}
+.btn-guardar:hover{
+  background-color: #5e34e8;
+}
+
