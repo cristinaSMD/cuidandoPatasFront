@@ -19,12 +19,6 @@ export class PerfilComponent implements OnInit {
   mascotas: Mascota[] = [];
   errorMessage: string | null = null;
 
-  defaultImages: string[] = [
-    'default1.jpg',
-    'default2.jpg',
-    'default3.jpg',
-  ];
-
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
@@ -42,7 +36,8 @@ export class PerfilComponent implements OnInit {
       breed: [''],
       petName: ['', [Validators.required]],
       dateBirth: [''],
-      chip: [''], // [Validators.required, Validators.pattern('^[0-9]+$')]
+      chip: [''],
+      foto:[''],
     });
   }
 
@@ -55,8 +50,7 @@ export class PerfilComponent implements OnInit {
 
   // Variables del usuario
   username: string = ''; 
-  name: string = '';
-  surname: string = '';
+
 
   // Ejecutar lógica al inicializar el componente
   ngOnInit(): void {
@@ -132,7 +126,6 @@ export class PerfilComponent implements OnInit {
       },
       error: (error) => {
         console.error('Error al consultar las mascotas:', error);
-        alert('Error al consultar las mascotas. Por favor, inténtalo de nuevo.');
       }
     });
   }

@@ -1,27 +1,48 @@
 <div class="container mt-4" *ngIf="mascota">
-    <h2>{{ mascota.petName }}</h2>
+  <div class="card p-4" style="background-color: #e1ddf1; border-radius: 10px;">
+    <h2 class="text-center">{{ mascota.petName }}</h2>
     <form>
-      <div class="mb-3">
-        <label for="type" class="form-label">Tipo:</label>
-        <input type="text" id="type" class="form-control" [value]="mascota.type" readonly />
-      </div>
-      <div class="mb-3">
-        <label for="breed" class="form-label">Raza:</label>
-        <input type="text" id="breed" class="form-control" [value]="mascota.breed" readonly />
-      </div>
-      <div class="mb-3">
-        <label for="chip" class="form-label">Nº Chip:</label>
-        <input type="text" id="chip" class="form-control" [value]="mascota.chip" readonly />
-      </div>
-      <div class="mb-3">
-        <label for="dateBirth" class="form-label">Fecha de Nacimiento:</label>
-        <input
-          type="text"
-          id="dateBirth"
-          class="form-control"
-          [value]="mascota.dateBirth | date: 'dd/MM/yyyy'"
-          readonly
-        />
+      <!-- Campo oculto para el ID -->
+      <input type="text" [(ngModel)]="mascota.id" name="id" />
+
+      <div class="row">
+        <!-- Tipo -->
+        <div class="col-12 col-md-4 mb-3">
+          <label for="type" class="form-label">Tipo:</label>
+          <input type="text" id="type" class="form-control" [(ngModel)]="mascota.type" name="type" />
+        </div>
+
+        <!-- Raza -->
+        <div class="col-12 col-md-4 mb-3">
+          <label for="breed" class="form-label">Raza:</label>
+          <input type="text" id="breed" class="form-control" [(ngModel)]="mascota.breed" name="breed" />
+        </div>
+
+        <!-- Nº Chip -->
+        <div class="col-12 col-md-4 mb-3">
+          <label for="chip" class="form-label">Nº Chip:</label>
+          <input type="text" id="chip" class="form-control" [(ngModel)]="mascota.chip" name="chip" />
+        </div>
+
+        <!-- Fecha de Nacimiento -->
+        <div class="col-12 col-md-4 mb-3">
+          <label for="dateBirth" class="form-label">Fecha de Nacimiento:</label>
+          <input type="text" id="dateBirth" class="form-control" [(ngModel)]="mascota.dateBirth" name="dateBirth" />
+        </div>
       </div>
     </form>
+
+    <!-- Botones: Actualizar y Deceso -->
+    <div class="d-flex justify-content-end">
+      <!-- Botón de actualizar -->
+      <button class="btn-detalle" (click)="updatePet()">
+        Actualizar
+      </button>
+
+      <!-- Botón de deceso -->
+      <button class="btn-detalle" (click)="markPetAsDeceased()">
+        Deceso
+      </button>
+    </div>
   </div>
+</div>

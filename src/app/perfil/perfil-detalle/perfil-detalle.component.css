@@ -1,0 +1,13 @@
+.btn-detalle {
+    background-color: #876be4;
+    color: white;
+    border-radius: 5px;
+    margin: 20px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .btn-detalle:hover {
+    background-color: #6b54c7; /* Un color ligeramente más oscuro al pasar el cursor */
+  }

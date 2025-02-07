@@ -3,18 +3,6 @@
     <!-- Parte superior dividida en dos -->
     <div class="top-section">
 
-        <!-- Caja a la izquierda para el formulario de Login -->
-        <div class="left-box">
-            <form class="login-form" [formGroup]="createUserForm" (ngSubmit)="onSubmit()">
-                <label for="name">Nombre:</label>
-                <input type="text" id="name" name="name" placeholder="Nombre" formControlName="name" />
-                <label for="sourname">Apellidos:</label>
-                <input type="text" id="surname" name="surname" placeholder="Apellidos" formControlName="surname" />
-                <button type="submit" class="btn-actualizar" [disabled]="createUserForm.invalid">
-                    Actualizar
-                </button>
-            </form>
-        </div>
 
         <!-- Caja a la derecha para el botón de "Crear Mascota" -->
         <div class="right-box">
@@ -59,7 +47,7 @@
                         </div>
                         <div class="col-6">
                             <label for="foto">Subir Foto:</label>
-                            <input type="file" id="foto" accept="image/*" (change)="onImageSelect($event)" />
+                            <input type="file" id="foto" name="foto" formControlName="foto" accept="image/*" (change)="onImageSelect($event)" />
                         </div>
                     </div>
                     <!-- Botón Guardar -->
@@ -77,9 +65,8 @@
     <div class="lista-mascotas">
         <!-- Mostrar imágenes por defecto solo si no hay mascotas -->
         <ng-container *ngIf="mascotas.length === 0">
-            <div class="mascota" *ngFor="let image of defaultImages">
-                <img [src]="image" alt="Imagen predeterminada" />
-                <p>Mascota</p>
+            <div class="mascota">
+                <p>No hay mascotas disponibles</p>
             </div>
         </ng-container>
 

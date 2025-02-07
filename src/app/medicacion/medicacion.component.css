@@ -74,6 +74,8 @@
   background-color: #876be4;
   color: white;
   border-radius: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 .btn-guardar:hover{
   background-color: #5e34e8;

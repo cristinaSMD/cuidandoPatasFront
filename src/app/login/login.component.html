@@ -1,34 +1,83 @@
 <div class="container d-flex justify-content-center align-items-center min-vh-100">
-    <div class="card shadow-sm p-4">
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-      <h2 class="mb-4 text-center">Login</h2>
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <div class="mb-3">
-          <label for="username" class="form-label">Nombre</label>
-          <input
-            type="text"
-            id="username"
-            class="form-control"
-            formControlName="username"
-            placeholder="Enter your username"
-            required
-          />
-        </div>
-        <div class="mb-3">
-          <label for="password" class="form-label">Contraseña</label>
-          <input
-            type="password"
-            id="password"
-            class="form-control"
-            formControlName="password"
-            placeholder="Enter your password"
-            required
-          />
-        </div>
-        <button type="submit" class="btn btn-primary w-100" [disabled]="loginForm.invalid">Login</button>
-      </form>
-      <div id="response-message" class="mt-3" *ngIf="errorMessage">
-        <div class="alert alert-danger">{{ errorMessage }}</div>
+  <div class="card shadow-sm p-4">
+    <!-- Enlace al estilo de Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <h2 class="mb-4 text-center">Login</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <!-- Campo de nombre de usuario -->
+      <div class="mb-3">
+        <label for="username" class="form-label">Nombre</label>
+        <input
+          type="text"
+          id="username"
+          class="form-control"
+          formControlName="username"
+          placeholder="Enter your username"
+          required
+        />
       </div>
+
+      <!-- Campo de contraseña -->
+      <div class="mb-3">
+        <label for="password" class="form-label">Contraseña</label>
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          formControlName="password"
+          placeholder="Enter your password"
+          required
+        />
+      </div>
+
+      <!-- Campo de email (visible después de "Crear Usuario") -->
+      <div class="mb-3" *ngIf="isCreatingUser">
+        <label for="email" class="form-label">Correo Electrónico</label>
+        <input
+          type="email"
+          id="email"
+          class="form-control"
+          formControlName="email"
+          placeholder="Enter your email"
+          required
+        />
+      </div>
+
+      <!-- Botón para guardar el nuevo usuario (visible solo si se está creando usuario) -->
+      <button
+        class="btn btn-success w-100 mb-2"
+        *ngIf="isCreatingUser"
+        (click)="onCreateUser()"
+        [disabled]="loginForm.get('email')?.invalid || loginForm.invalid"
+        type="button"
+      >
+        Guardar Usuario
+      </button>
+
+      <!-- Botón de Login -->
+      <button
+        type="submit"
+        class="btn btn-primary w-100"
+      >
+        Login
+      </button>
+
+      <!-- Botón para "Crear Usuario" -->
+      <button
+        class="btn btn-link w-100 mt-2"
+        type="button"
+        (click)="toggleCreateUser()"
+      >
+        {{ isCreatingUser ? 'Cancelar' : 'Crear Usuario' }}
+      </button>
+    </form>
+
+    <!-- Mensaje de error -->
+    <div id="response-message" class="mt-3" *ngIf="errorMessage">
+      <div class="alert alert-danger">{{ errorMessage }}</div>
     </div>
   </div>
+</div>
