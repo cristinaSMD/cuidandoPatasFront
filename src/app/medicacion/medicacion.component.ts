@@ -15,22 +15,20 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
   imports: [MasterListComponent, CommonModule, ReactiveFormsModule],
 })
 export class MedicacionComponent implements OnInit {
-  // Columnas específicas para medicación
   columns = columnsConfig.medicacion;
 
-  // Información para las listas de datos
-  data: any[] = []; // Medicaciones asociadas a una mascota
-  mascotas: Mascota[] = []; // Lista inicial de mascotas como un arreglo vacío
-  selectedPetId: string | null = null; // Mascota seleccionada
+  data: any[] = []; 
+  mascotas: Mascota[] = []; 
+  selectedPetId: string | null = null;
 
-  // Declaración del formulario reactivo
+
   createMedicacionForm: FormGroup;
-  isCollapsed = true; // Para gestionar el estado del formulario colapsable
+  isCollapsed = true; 
 
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private medicacionService: MedicacionService // Inyectamos el servicio aquí
+    private medicacionService: MedicacionService 
   ) {
     // Inicializar el formulario reactivo
     this.createMedicacionForm = this.fb.group({
@@ -44,13 +42,13 @@ export class MedicacionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.cargarMascotas(); // Cargamos las mascotas al iniciar el componente
+    this.cargarMascotas(); 
     console.log("Estado inicial de mascotas antes de cargar:", this.mascotas);
   }
 
   // Método para cargar las mascotas asociadas al usuario
   cargarMascotas(): void {
-    const usuarioId = localStorage.getItem('userSessionId'); // Obtener el ID de sesión del usuario
+    const usuarioId = localStorage.getItem('userSessionId'); 
 
     if (!usuarioId) {
       console.error('No hay ID de sesión en localStorage. No se pueden cargar las mascotas.');
@@ -60,10 +58,9 @@ export class MedicacionComponent implements OnInit {
     // Llamada al servicio para obtener las mascotas
     this.medicacionService.getMascotasByUsuarioId(usuarioId).subscribe({
       next: (response) => {
-        this.mascotas = response; // Asignamos las mascotas obtenidas al arreglo
+        this.mascotas = response; 
         console.log('Mascotas cargadas:', this.mascotas);
 
-        // Selecciona automáticamente la primera mascota si existe
         if (this.mascotas.length > 0) {
           this.seleccionarMascota(this.mascotas[0].id);
         }
@@ -78,9 +75,10 @@ export class MedicacionComponent implements OnInit {
   cargarMedicaciones(petId: string): void {
     this.medicacionService.getMedicacionesByPetId(petId).subscribe({
       next: (response) => {
-        this.data = response; // Asignamos las medicaciones al arreglo `data`
+        this.data = response; 
       },
       error: (err) => {
+        this.data = [];
         console.error('Error al obtener las medicaciones del backend:', err);
       },
     });
@@ -88,19 +86,16 @@ export class MedicacionComponent implements OnInit {
 
   // Método para manejar el clic en un botón de mascota
   seleccionarMascota(petId: string): void {
-    this.selectedPetId = petId; // Guardamos el ID de la mascota seleccionada
-    this.cargarMedicaciones(petId); // Cargamos las medicaciones asociadas a la mascota
+    this.selectedPetId = petId; 
+    this.cargarMedicaciones(petId); 
   }
 
   // Método para guardar una medicación
   createMedicacion(): void {
     if (this.selectedPetId && this.createMedicacionForm.valid) {
       const medicacion = this.createMedicacionForm.value;
-
-      // Llamar al servicio para guardar la medicación
       this.medicacionService.createMedicacion(this.selectedPetId, medicacion).subscribe({
         next: () => {
-          // Actualizar la tabla después de guardar
           this.cargarMedicaciones(this.selectedPetId as string);
           alert('Medicación creada ');
           this.createMedicacionForm.reset({ active: false }); 

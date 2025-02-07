@@ -3,7 +3,7 @@
   --header-bg: #E1DDF1;
   --sidebar-bg: #d6e1d9;
   --body-bg: #F8F4EB;
-  --text-color: #333; /* Color del texto principal */
+  --text-color: #333; 
 }
 
 /* Estilo general */
@@ -18,30 +18,30 @@ body {
 .home-container {
   display: flex;
   flex-direction: column;
-  height: 100vh; /* Asegura que ocupe toda la ventana */
+  height: 100vh; 
 }
 
 /* CABECERA */
 .header {
   background-color: var(--header-bg);
   display: flex;
-  align-items: center; /* Centra verticalmente el contenido */
+  align-items: center; 
   padding: 10px 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .logo-container {
   display: flex;
-  justify-content: center; /* Centrar horizontalmente */
+  justify-content: center; 
   align-items: center;
-  margin: 30px auto; /* Espaciado superior e inferior y centrado horizontal */
+  margin: 30px auto; 
   width: 100%;
 }
 
 .logo-container img {
   width: 300px;
-  height: auto; /* Mantiene proporciones */
-  object-fit: contain; /* Evita recortes o deformaciones */
+  height: auto; 
+  object-fit: contain; 
 }
 
 .user-box {
@@ -70,7 +70,7 @@ body {
 /* CONTENIDO PRINCIPAL */
 .content {
   display: flex;
-  flex: 1; /* Toma todo el espacio disponible */
+  flex: 1; 
 }
 
 /* MENÚ LATERAL */
@@ -82,7 +82,7 @@ body {
 }
 
 .sidebar ul {
-  list-style: none; /* Sin viñetas en la lista */
+  list-style: none; 
   padding: 0;
   margin: 0;
 }
@@ -91,31 +91,31 @@ body {
   margin-bottom: 15px;
 }
 
-/* Enlaces del menú */
+/* menú */
 .menu-item {
-  display: block; /* Ocupar todo el ancho del recuadro */
+  display: block; 
   padding: 10px 15px;
-  text-decoration: none; /* Sin subrayado */
+  text-decoration: none; 
   color: white;
   font-weight: bold;
   font-size: 16px;
-  border-radius: 10px; /* Bordes redondeados */
-  background-color: #92bb9b; /* Azul claro */
-  text-align: center; /* Texto centrado */
-  transition: background-color 0.3s ease; /* Transición suave */
+  border-radius: 10px; 
+  background-color: #92bb9b;
+  text-align: center; 
+  transition: background-color 0.3s ease; 
 }
 
 .menu-item:hover {
-  background-color: #7fa988; /* Azul oscuro al pasar el ratón */
+  background-color: #7fa988; 
 }
 
 .menu-item.active-link {
-  background-color: #58ac6a; /* Azul más oscuro para el activo */
+  background-color: #58ac6a; 
 }
 
 /* CUERPO PRINCIPAL */
 .main-content {
-  flex: 1; /* Toma el área restante */
+  flex: 1; 
   padding: 20px;
   background-color: var(--body-bg);
 }
@@ -135,9 +135,9 @@ body {
 
 .footer a {
   text-decoration: none;
-  color: #007bff; /* Azul para el enlace */
+  color: #007bff; 
 }
 
 .footer a:hover {
-  text-decoration: underline; /* Subrayado al pasar el ratón */
+  text-decoration: underline; 
 }

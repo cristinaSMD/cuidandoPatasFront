@@ -11,22 +11,22 @@ import { Router } from '@angular/router';
   standalone: true,
   templateUrl: './master-list.component.html',
   styleUrls: ['./master-list.component.css'],
-  imports: [CommonModule, MatIconModule, MatTooltipModule], // Importa MatIconModule aquí.
+  imports: [CommonModule, MatIconModule, MatTooltipModule], 
 })
 export class MasterListComponent {
   @Input() columns: { header: string; field: string }[] = [];
   @Input() data: any[] = [];
 
-  @Output() crearElemento = new EventEmitter<void>(); // Evento para el botón "Crear"
+  @Output() crearElemento = new EventEmitter<void>();
 
-  constructor(private router: Router) { } // Inyectar el Router
+  constructor(private router: Router) { } 
 
-  // Método para manejar la navegación al detalle
+  // Método para manejar la navegación
   navigateToDetail(row: any): void {
-    // Aquí puedes pasar parámetros como el nombre o ID del medicamento
+  
     this.router.navigate(['/medicacion.detalle', row.name]);
   }
-  // Este método emitirá el evento cuando se haga clic en "Crear"
+ 
   onCrearClick(): void {
     this.crearElemento.emit();
   }

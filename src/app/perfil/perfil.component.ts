@@ -36,8 +36,8 @@ export class PerfilComponent implements OnInit {
       breed: [''],
       petName: ['', [Validators.required]],
       dateBirth: [''],
-      chip: [''],
-      foto:[''],
+      chip: [''], // [Validators.required, Validators.pattern('^[0-9]+$')]
+      photo: [''],
     });
   }
 
@@ -47,6 +47,7 @@ export class PerfilComponent implements OnInit {
   petName: string = '';
   dateBirth: string = '';
   chip: string = '';
+  photo: string | undefined;
 
   // Variables del usuario
   username: string = ''; 
@@ -54,17 +55,14 @@ export class PerfilComponent implements OnInit {
 
   // Ejecutar lógica al inicializar el componente
   ngOnInit(): void {
-    // Obtener datos del usuario desde el localStorage
     this.loadUserData();
     console.log('ID de sesión actual:', localStorage.getItem('userSessionId'));
-    
-    // Cargar las mascotas del usuario al inicializar
     this.loadPets(); 
   }
 
   // Carga los datos del usuario desde el localStorage
   private loadUserData(): void {
-    this.username = localStorage.getItem('username') || ''; // Cargar el username
+    this.username = localStorage.getItem('username') || ''; 
   }
 
   // Seleccionar una imagen de mascota
@@ -74,13 +72,21 @@ export class PerfilComponent implements OnInit {
     if (input.files && input.files.length > 0) {
       const file = input.files[0];
       console.log('Imagen seleccionada:', file);
-      // Aquí puedes realizar más acciones como cargar el archivo al servidor.
-    }
-  }
+      const reader = new FileReader();
+      reader.onload = () => {
+        const base64String = (reader.result as string).split(',')[1]; 
+        
+        this.createPetForm.patchValue({ photo: base64String });
+  
+        console.log('Imagen en Base64:', base64String);
+      };
 
-  // Mostrar/ocultar formulario (colapsar el formulario)
-  toggleCollapse(): void {
-    this.isCollapsed = !this.isCollapsed;
+      reader.onerror = (error) => {
+        console.error('Error al leer el archivo: ', error);
+      };
+
+      reader.readAsDataURL(file); 
+    }
   }
 
   // Método para enviar una mascota al servidor
@@ -107,6 +113,11 @@ export class PerfilComponent implements OnInit {
       alert('Por favor rellena todos los campos obligatorios antes de añadir.');
       console.log('Errores en el formulario:', this.createPetForm.errors);
     }
+  }
+
+  // Mostrar/ocultar formulario (colapsar el formulario)
+  toggleCollapse(): void {
+    this.isCollapsed = !this.isCollapsed;
   }
 
   // Cargar lista de mascotas del usuario

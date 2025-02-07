@@ -15,7 +15,7 @@ export const MedicationDetailConfig = [
   ];
   
   /*
-  // Configuración para Pruebas (comentada)
+  // Configuración para Pruebas
   export const TestDetailConfig = [
     { key: 'type', label: 'Tipo de Prueba' },
     { key: 'result', label: 'Resultado' },
@@ -25,8 +25,8 @@ export const MedicationDetailConfig = [
   ];
   */
   
-  // Si deseas exportar configuraciones organizadas en un objeto general para uso más dinámico:
+ 
   export const FieldConfigs = {
     medicaciones: MedicationDetailConfig,
-    // pruebas: TestDetailConfig, // Uncomment si lo necesitas
+   
   };

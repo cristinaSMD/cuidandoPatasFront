@@ -16,13 +16,13 @@ import { MatNativeDateModule } from '@angular/material/core';
   imports: [
     CommonModule,
     FormsModule,
-    MatDatepickerModule, // Importar el módulo del Datepicker
-    MatInputModule, // Importar el módulo para el componente <input>
-    MatNativeDateModule, // Para formato de fechas nativo
+    MatDatepickerModule, 
+    MatInputModule, 
+    MatNativeDateModule, 
   ],
 })
 export class PerfilDetalleComponent implements OnInit {
-  mascota: Mascota | null = null; // Datos de la mascota
+  mascota: Mascota | null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -51,7 +51,7 @@ export class PerfilDetalleComponent implements OnInit {
 
       this.petService.updatePet(userSessionId, this.mascota).subscribe({
         next: () => {
-          this.router.navigate(['/perfil']); // Redirigir al perfil
+          this.router.navigate(['/perfil']); 
         },
         error: (err: any) => console.error('Error al actualizar la mascota:', err),
       });
@@ -62,7 +62,7 @@ export class PerfilDetalleComponent implements OnInit {
     if (this.mascota) {
       this.petService.markPetAsDeceased(this.mascota.id).subscribe({
         next: () => {
-          this.router.navigate(['/perfil']); // Redirigir al perfil
+          this.router.navigate(['/perfil']); 
         },
         error: (err: any) => console.error('Error al marcar como fallecida:', err),
       });

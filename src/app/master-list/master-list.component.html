@@ -32,23 +32,20 @@
             </mat-icon>
           </ng-container>
 
-          <!--METER EL CRUD-->
-
           <!-- Si el campo es "opciones" -->
           <ng-container *ngSwitchCase="'opciones'">
-            <!-- Ícono de edición con tooltip -->
             <mat-icon matTooltip="Editar" matTooltipPosition="above" class="icon-edit" (click)="navigateToDetail(row)">
               create
             </mat-icon>
           </ng-container>
 
 
-          <!-- Mostrar valores por defecto para otras columnas -->
+          <!--valores por defecto para otras columnas -->
           <ng-container *ngSwitchDefault>
             <ng-container *ngIf="row[column.field]; else emptyField">
               {{ row[column.field] }}
             </ng-container>
-            <!-- Reemplaza el campo vacío con un ícono -->
+            <!-- Reemplazo el campo vacío con un ícono -->
             <ng-template #emptyField>
               <mat-icon class="icon-empty">remove</mat-icon>
             </ng-template>

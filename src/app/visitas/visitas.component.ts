@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'; // Importamos OnInit para inicialización
+import { Component, OnInit } from '@angular/core'; 
 import { MatCalendar } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
@@ -19,14 +19,10 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
   ],
 })
 export class VisitasComponent implements OnInit {
-  // Fecha seleccionada en el calendario
   fechaSeleccionada: Date = new Date();
-
-  // Lista de visitas guardadas
   visitas: Date[] = [];
 
   ngOnInit(): void {
-    // Al iniciar el componente, cargamos las visitas desde localStorage
     const visitasGuardadas = localStorage.getItem('visitas');
     if (visitasGuardadas) {
       this.visitas = JSON.parse(visitasGuardadas).map((fecha: string) => new Date(fecha));
@@ -37,8 +33,6 @@ export class VisitasComponent implements OnInit {
   guardarFecha() {
     if (!this.visitas.find(fecha => fecha.toDateString() === this.fechaSeleccionada.toDateString())) {
       this.visitas.push(this.fechaSeleccionada);
-
-      // Actualizar el localStorage tras guardar la fecha
       localStorage.setItem('visitas', JSON.stringify(this.visitas));
     }
   }

@@ -25,15 +25,15 @@ tr:hover {
 }
 /*Iconos de true o false*/
 .icon {
-  font-size: 24px; /* Aumentar tamaño del ícono */
+  font-size: 24px; 
   vertical-align: middle;
 }
 
 .icon-active {
-  color: rgb(225, 95, 199); /* Color para la marca de "hecho" (activo) */
+  color: rgb(225, 95, 199); 
 }
 
 .icon-inactive {
-  color: rgb(109, 5, 78); /* Color para el valor "inactivo" */
+  color: rgb(109, 5, 78); 
 }
 

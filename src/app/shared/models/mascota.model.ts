@@ -8,7 +8,7 @@ export interface Mascota {
     petName: string;   
     dateBirth?: string;  
     chip: string;      
-    foto?: string;      
+    photo?: string;      
   }
  
 

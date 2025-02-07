@@ -27,7 +27,7 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 10px; /* Espacio entre botones */
+    gap: 10px; 
   }
   
   .mascotas-buttons .btn {
@@ -44,12 +44,12 @@
 
  /* Formulario colapsado */
 .form-crear-medicacion.collapsed {
-  display: none; /* Oculta el formulario */
+  display: none; 
 }
 
 /* Formulario expandido */
 .form-crear-medicacion {
-  display: block; /* Muestra el formulario */
+  display: block; 
 }
 
 .btn-success {

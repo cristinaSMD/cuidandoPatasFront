@@ -7,7 +7,7 @@ import { Mascota } from '../shared/models/mascota.model';
   providedIn: 'root',
 })
 export class MedicacionService {
-  private baseUrl = 'http://localhost:8080/api/v1/pet'; // Endpoint base de tu backend
+  private baseUrl = 'http://localhost:8080/api/v1/pet'; 
 
   constructor(private http: HttpClient) {}
 

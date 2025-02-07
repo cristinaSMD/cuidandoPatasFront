@@ -15,39 +15,35 @@ import { CommonModule } from '@angular/common';
   imports: [MasterListComponent, CommonModule, ReactiveFormsModule],
 })
 export class PruebasComponent implements OnInit {
-  // Asociamos las columnas de la tabla según `columnsConfig.pruebas`
   columns = columnsConfig.pruebas;
 
-  // Información de datos y mascota seleccionada
-  data: any[] = []; // Datos de las pruebas
-  mascotas: Mascota[] = []; // Lista de mascotas
-  selectedPetId: string | null = null; // Mascota seleccionada
+  data: any[] = []; 
+  mascotas: Mascota[] = []; 
+  selectedPetId: string | null = null;
 
-  // Configuración del formulario reactivo
+
   createPruebaForm: FormGroup;
-  isCollapsed = true; // Estado para mostrar/ocultar el formulario
+  isCollapsed = true; 
 
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private pruebasService: PruebasService // Servicio que maneja datos de pruebas
+    private pruebasService: PruebasService 
   ) {
     // Inicializamos el formulario
     this.createPruebaForm = this.fb.group({
-      type: ['', Validators.required], // Tipo de prueba como análisis de sangre, radiografía, etc.
-      date: ['', Validators.required], // Fecha de la prueba
-      result: [''], // Campo para el resultado si aplica
+      type: ['', Validators.required], 
+      date: ['', Validators.required], 
+      result: [''], 
     });
   }
 
   ngOnInit(): void {
-    // Cargar las mascotas cuando el componente se inicialice
     this.cargarMascotas();
   }
 
   // Método para cargar las mascotas asociadas al usuario
   cargarMascotas(): void {
-    // Recuperar el ID del usuario de la sesión local
     const usuarioId = localStorage.getItem('userSessionId');
     if (!usuarioId) {
       console.error('No se ha encontrado una sesión activa.');
@@ -73,9 +69,10 @@ export class PruebasComponent implements OnInit {
   cargarPruebas(petId: string): void {
     this.pruebasService.getPruebasByPetId(petId).subscribe({
       next: (response) => {
-        this.data = response; // Guardar las pruebas en el arreglo `data`
+        this.data = response; 
       },
       error: (error) => {
+        this.data = [];
         console.error('Error al obtener las pruebas:', error);
       },
     });
@@ -83,22 +80,21 @@ export class PruebasComponent implements OnInit {
 
   // Método para manejar la selección de mascota
   seleccionarMascota(petId: string): void {
-    this.selectedPetId = petId; // Guardar el ID de la mascota seleccionada
-    this.cargarPruebas(petId); // Cargar las pruebas asociadas
+    this.selectedPetId = petId; 
+    this.cargarPruebas(petId); 
+
   }
 
   // Método para crear una nueva prueba
   createPrueba(): void {
     if (this.selectedPetId && this.createPruebaForm.valid) {
-      const prueba = this.createPruebaForm.value; // Datos del formulario
-
-      // Llamar al servicio para guardar la nueva prueba
+      const prueba = this.createPruebaForm.value;
       this.pruebasService.createPrueba(this.selectedPetId, prueba).subscribe({
         next: () => {
-          this.cargarPruebas(this.selectedPetId as string); // Cargar nuevamente las pruebas
+          this.cargarPruebas(this.selectedPetId as string); 
           alert('Prueba creada correctamente.');
-          this.createPruebaForm.reset(); // Reiniciar el formulario
-          this.isCollapsed = true; // Ocultar el formulario
+          this.createPruebaForm.reset(); 
+          this.isCollapsed = true; 
         },
         error: (error) => {
           console.error('Error al crear la prueba:', error);
@@ -110,7 +106,6 @@ export class PruebasComponent implements OnInit {
     }
   }
 
-  // Método para alternar el estado del formulario (colapsar/expandir)
   toggleCollapse(): void {
     this.isCollapsed = !this.isCollapsed;
   }

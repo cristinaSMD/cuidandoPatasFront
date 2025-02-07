@@ -6,14 +6,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root', // Hace el servicio disponible en toda la aplicación
 })
 export class UsuarioService {
-  private baseUrl = '/api/v1/users'; // Ruta base para los endpoints del backend
+  private baseUrl = '/api/v1/users';
 
   constructor(private http: HttpClient) {}
 
-  /**
-   * Método para iniciar sesión
-   * Envía las credenciales al backend y obtiene el ID de sesión.
-   */
+  /* Método para iniciar sesión */
+
   login(username: string, password: string): Observable<string> {
     const loginData = { username, password };
     return this.http.post<string>(`${this.baseUrl}/loginProcess`, loginData, {
@@ -21,10 +19,7 @@ export class UsuarioService {
     });
   }
 
-  /**
-   * Método para crear un nuevo usuario
-   * Envía los datos al backend y recibe el resultado.
-   */
+  /* Método para crear un nuevo usuario */
   createUser(user: { username: string; password: string; email: string }): Observable<any> {
     return this.http.post(`${this.baseUrl}/create`, user);
   }

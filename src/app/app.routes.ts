@@ -39,6 +39,6 @@ export const routes: Routes = [
 
 
 
-  // Ruta comodín para redirigir a login si la ruta no existe
+  // Ruta para redirigir a login si la ruta no existe
   { path: '**', redirectTo: 'login' },
 ];

@@ -8,7 +8,7 @@ import { Mascota } from '../shared/models/mascota.model';
 })
 export class PetService {
 
-  private baseUrl = '/api/v1/pets'; // Base URL para las mascotas
+  private baseUrl = '/api/v1/pets'; 
 
   constructor(private http: HttpClient) { }
 
